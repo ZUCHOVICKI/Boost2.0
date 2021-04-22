@@ -9,6 +9,9 @@ export default function Formulario({navigation}) {
 
     let ActiveUser;//Creacion del Usuario activo
     let date = new Date()
+    let day = date.getDate()
+    let month = date.getMonth()+1
+    let Year = date.getFullYear()
 
     //Validación de si el Usuario este Logeado
     Firebase.auth().onAuthStateChanged(function (user) {
@@ -42,15 +45,18 @@ export default function Formulario({navigation}) {
             <Slider style={{ width: 250, height: 50 }} minimumValue={0} maximumValue={10} value={5} step={1} onValueChange={(value) => { setQ4(value) }} />
 
             <Button onPress={() => {
-
+              
                 Firebase.firestore().collection("Formularios").doc(ActiveUser.uid).set({
-                    Question1:q1,
-                    Question2:q2,
-                    Question3:q3,
-                    Question4:q4,
-                    dateLog:date
+                    
+                    ['Questions--'+day+"--"+month+"--"+Year]:{
+                        Question1:q1,
+                        Question2:q2,
+                        Question3:q3,
+                        Question4:q4,
+                        dateLog:date}
+                    
 
-                })
+                },{merge:true})
                 navigation.navigate('Main')
             }}>
                 <Text>Enviar Formulario</Text>
