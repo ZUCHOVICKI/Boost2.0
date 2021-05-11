@@ -10,6 +10,7 @@ import firestore from "./config/firebase"
 import {Container,Content,Header,Form,Input,Item,Button,Label} from "native-base"
 import Main from './src/pages/Main'
 import Formulario from './src/pages/Formulario'
+import Graficas from './src/pages/Graficas'
 function LogIN({navigation}) {
 
   const [email,setEmail] = useState("")
@@ -131,6 +132,7 @@ function App() {
         <Stack.Screen name="LogIn" component={LogIN} />
         <Stack.Screen name="Main" component={Main} />
         <Stack.Screen name="Formulario" component={Formulario} />
+        <Stack.Screen name="Graficas" component={Graficas} />
       </Stack.Navigator>
     </NavigationContainer>
   );

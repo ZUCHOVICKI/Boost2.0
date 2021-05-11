@@ -18,13 +18,18 @@ export default function NextPage({navigation}) {
 return (
 
     <View>
-        <Text>
+        
            <Button onPress={()=>{
              navigation.navigate('Formulario')
            }} >
              <Text>Formularios</Text>
            </Button>
-        </Text>
+        
+        <Button onPress={()=>{
+             navigation.navigate('Graficas')
+           }} >
+             <Text>Graficas</Text>
+           </Button>
     </View>
 )
 

@@ -32,16 +32,17 @@ export default function Formulario({navigation}) {
 
     return (
         <View>
-            <Text>Pregunta 1 </Text><Text>{q1}</Text>
+            <Text>¿Has Tomado suficiente agua esta dia? </Text><Text>{q1}</Text>
             <Slider style={{ width: 250, height: 50 }} minimumValue={0} maximumValue={10} value={5} step={1} onValueChange={(value) => { setQ1(value) }} />
 
-            <Text>Pregunta 2 </Text><Text>{q2}</Text>
+            <Text>¿Describe tu nivel de estres este dia?  </Text><Text>{q2}</Text>
             <Slider style={{ width: 250, height: 50 }} minimumValue={0} maximumValue={10} value={5} step={1} onValueChange={(value) => { setQ2(value) }} />
 
-            <Text>Pregunta 3</Text><Text>{q3}</Text>
+
+            <Text>¿Has terminado los pendientes que tenias propuestos?</Text><Text>{q3}</Text>
             <Slider style={{ width: 250, height: 50 }} minimumValue={0} maximumValue={10} value={5} step={1} onValueChange={(value) => { setQ3(value) }} />
 
-            <Text>Pregunta 4 </Text><Text>{q4}</Text>
+            <Text>¿Cual dirias que es tu estado de animo el dia de hoy?</Text><Text>{q4}</Text>
             <Slider style={{ width: 250, height: 50 }} minimumValue={0} maximumValue={10} value={5} step={1} onValueChange={(value) => { setQ4(value) }} />
 
             <Button onPress={() => {
@@ -53,7 +54,11 @@ export default function Formulario({navigation}) {
                         Question2:q2,
                         Question3:q3,
                         Question4:q4,
-                        dateLog:date}
+                        Total:q1+q2+q3+q4,
+                        
+                        dateLog:date},
+
+                    ['Questions--'+day+"--"+month+"--"+Year+"--Array"]:[q1,q2,q3,q4,(q1+q2+q3+q4),(Year+"-"+month+"-"+day)]
                     
 
                 },{merge:true})
