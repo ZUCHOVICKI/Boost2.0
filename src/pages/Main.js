@@ -46,8 +46,8 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     WorkflowTeamwork: {
-        width: 20,
-        height: 20,
+        width: 300,
+        height: 300,
     },
 
 });
