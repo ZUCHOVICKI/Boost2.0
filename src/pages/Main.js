@@ -1,32 +1,53 @@
-import React, { useState , Component} from 'react';
-import Firebase from "../../config/firebase";
-import {View,Text} from 'react-native'
-import {Container,Content,Header,Form,Input,Item,Button,Label} from "native-base"
-export default function NextPage({navigation}) {
+import { StatusBar } from "expo-status-bar";
+import React, { useState, useEffect } from "react";
+import { StyleSheet, Text, View, Image, TextInput } from "react-native";
 
-    const[email,setEmail] = useState("")
+export default function Main({ navigation }) {
 
-    Firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-          setEmail(user.email)
-        } else {
-          // No user is signed in.
-        }
-      });
-      
-     
-return (
+    useEffect(function () {
+        navigation.setOptions({
+            headerShown: false,
 
-    <View>
-        <Text>
-           <Button onPress={()=>{
-             navigation.navigate('Formulario')
-           }} >
-             <Text>Formularios</Text>
-           </Button>
-        </Text>
-    </View>
-)
+        });
+    });
+
+    return (
+        <View style={styles.container}>
+            <Image
+                style={styles.WorkflowTeamwork}
+                source={require('../img/WorkflowTeamwork.png')}
+            />
+
+            <Text >Hola.</Text>
+            <TextInput
 
 
+                placeholder="Usuario"
+            />
+            <TextInput
+
+
+                placeholder="Contraseña"
+                secureTextEntry={true}
+            />
+
+
+
+            <StatusBar style="auto" />
+        </View>
+    );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: "#0A0B3E",
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    WorkflowTeamwork: {
+        width: 20,
+        height: 20,
+    },
+
+});
