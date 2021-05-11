@@ -1,8 +1,11 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, Image, TextInput } from "react-native";
+import { StyleSheet, Text, View, Image, TextInput, SafeAreaView } from "react-native";
+import {     
+    Poppins_700Bold,    
+} from "@expo-google-fonts/dev/index";
 
-export default function Main({ navigation }) {
+export default function Main({ navigation }) {    
 
     useEffect(function () {
         navigation.setOptions({
@@ -18,22 +21,15 @@ export default function Main({ navigation }) {
                 source={require('../img/WorkflowTeamwork.png')}
             />
 
-            <Text >Hola.</Text>
-            <TextInput
-
-
-                placeholder="Usuario"
-            />
-            <TextInput
-
-
-                placeholder="Contraseña"
-                secureTextEntry={true}
-            />
+            <Text style={styles.Ayuda}>Ayuda a templar el mar de la mente</Text>    
+            <Text style={styles.AyudaVersion}>Ayudate a ser la mejor versión de tí un paso a la vez con trabajo diario</Text>
 
 
 
-            <StatusBar style="auto" />
+            <SafeAreaView style={styles.topSafeArea}>
+                <StatusBar style="auto" />
+            </SafeAreaView>
+            
         </View>
     );
 }
@@ -45,9 +41,28 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
     },
+    topSafeArea: {
+        backgroundColor: 'white',
+    },
     WorkflowTeamwork: {
         width: 300,
         height: 300,
     },
+    Ayuda: {
+        padding: 10,
+        marginVertical: 8,
+        marginHorizontal: 16,
+        fontSize: 20,
+        textAlign: "center",
+        color: 'white',
+        fontFamily: "Poppins",
+    },
+    AyudaVersion: {
+        padding: 2,
+        marginHorizontal: 20,
+        fontSize: 15,
+        textAlign: "center",
+        color: 'white',
+    }
 
 });
