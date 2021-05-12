@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, Image, TextInput, SafeAreaView } from "react-native";
+import { StyleSheet, Text, View, Image, TextInput, SafeAreaView ,TouchableWithoutFeedback} from "react-native";
 import {     
     Poppins_700Bold,    
 } from "@expo-google-fonts/dev/index";
@@ -15,8 +15,12 @@ export default function Main({ navigation }) {
     });
 
     return (
-        <View style={styles.container}>
-            <Image
+
+        <TouchableWithoutFeedback onPress={()=>{
+            navigation.navigate('Login')
+        }}>
+        <View style={styles.container} >
+            <Image 
                 style={styles.WorkflowTeamwork}
                 source={require('../img/WorkflowTeamwork.png')}
             />
@@ -31,6 +35,7 @@ export default function Main({ navigation }) {
             </SafeAreaView>
             
         </View>
+        </TouchableWithoutFeedback>
     );
 }
 
