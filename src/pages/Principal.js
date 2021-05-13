@@ -34,6 +34,13 @@ return (
              <Text>Graficas</Text>
            </Button>
         </Text>
+        <Text>
+           <Button onPress={()=>{
+             navigation.navigate('Animo')
+           }} >
+             <Text>Animo Diario</Text>
+           </Button>
+        </Text>
     </View>
 )
 

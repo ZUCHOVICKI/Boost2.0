@@ -10,6 +10,7 @@ import Login from './src/pages/Login';
 import Principal from './src/pages/Principal';
 import Formulario from './src/pages/Formulario';
 import Graficas from './src/pages/Graficas'
+import Animo from './src/pages/AnimoDiario'
 
 export default function App() {
 
@@ -27,6 +28,7 @@ export default function App() {
         <Stack.Screen name="Principal" component={Principal} />
         <Stack.Screen name="Formulario" component={Formulario} />
         <Stack.Screen name="Graficas" component={Graficas} />
+        <Stack.Screen name="Animo" component={Animo} />
       </Stack.Navigator>
     </NavigationContainer>
   );
