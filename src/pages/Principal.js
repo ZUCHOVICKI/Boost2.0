@@ -26,6 +26,14 @@ return (
              <Text>Formularios</Text>
            </Button>
         </Text>
+
+        <Text>
+           <Button onPress={()=>{
+             navigation.navigate('Graficas')
+           }} >
+             <Text>Graficas</Text>
+           </Button>
+        </Text>
     </View>
 )
 
