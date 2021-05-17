@@ -11,7 +11,7 @@ import { Container, Content, Header, Form, Input, Item, Button, Label } from "na
 import Principal from './Principal';
 import Formulario from './Formulario';
 
-export default function Login({ navigation }) {
+export default function SignIn({ navigation }) {
 
   useEffect(function () {
     navigation.setOptions({
@@ -33,8 +33,10 @@ export default function Login({ navigation }) {
   return (
     
     <Container style={styles.container}>
-      <Form>
+      <Text>¡Vamos a registrarte!</Text>
+      <Text>¡Estás por tomar acciones que cambiarán tu vida!</Text>
 
+      <Form>
       <Item floatingLabel>
           <Label>Username</Label>
           <Input
@@ -72,33 +74,24 @@ export default function Login({ navigation }) {
         full rounded 
         onPress={()=>{
           try{
-            Firebase.auth().signInWithEmailAndPassword(email,password).then(function(user){
-              
-              var userActive = Firebase.auth().currentUser;
-              Firebase.firestore().collection("Users").doc(userActive.uid).set({
-                name:username,
-                email:email,
-                DateLog : today
+            
+            if(password.length<6){
+              alert("Contraseña Menor a 6 Caracteres")
+              return
+            }
 
-              })
-              
-              console.log(userActive)
-              navigation.navigate('Principal')
-            }).catch((error)=>{
-              alert(error)
-              // alert("Contraseña o Correo Incorrectos")
-            })            
+            Firebase.auth().createUserWithEmailAndPassword(email,password)
           }
           catch(error){
             console.log(error.toString())
           }
         }}
         >
-          <Text style={styles.text}>
-            Login
+
+          <Text  style={styles.text}>
+            Registro
           </Text>
         </Button>
-
       </Form>
     </Container>
    

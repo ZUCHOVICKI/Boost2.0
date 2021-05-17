@@ -16,16 +16,10 @@ useEffect(function () {
        console.log(Frases[num])
    
        setAutor(Frases[num].autor)
-       setFrase(Frases[num].frase)
-   
-        
-    
-    
-    
+       setFrase(Frases[num].frase)        
 }, [])
 
    
-
     function getRandomInt(min, max) {
         min = Math.ceil(min);
         max = Math.floor(max);

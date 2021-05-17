@@ -7,6 +7,7 @@ const Stack = createStackNavigator();
 
 import Main from './src/pages/Main';
 import Login from './src/pages/Login';
+import SignIn from './src/pages/SignIn';
 import Principal from './src/pages/Principal';
 import Formulario from './src/pages/Formulario';
 import Graficas from './src/pages/Graficas'
@@ -22,13 +23,17 @@ export default function App() {
   
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={{
+          headerTitle: false,
+        }}>
         <Stack.Screen name="Main" component={Main} />
         <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="SignIn" component={SignIn} />
         <Stack.Screen name="Principal" component={Principal} />
         <Stack.Screen name="Formulario" component={Formulario} />
         <Stack.Screen name="Graficas" component={Graficas} />
         <Stack.Screen name="Animo" component={Animo} />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );
