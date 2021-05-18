@@ -1,7 +1,7 @@
 import React, { useState , Component} from 'react';
 import Firebase from "../../config/firebase";
 import {View,Text} from 'react-native'
-import {Container,Content,Header,Form,Input,Item,Button,Label} from "native-base"
+import {Container, Content, Header, Form, Input, Item, Button, Label} from "native-base"
 
 export default function NextPage({navigation}) {
 
