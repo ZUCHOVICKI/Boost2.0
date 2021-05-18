@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
         padding: 10,
         marginVertical: 8,
         marginHorizontal: 18,
-        fontSize: 20,
+        fontSize: 22,
         textAlign: "center",
         color: 'white',
         fontWeight: "bold",

@@ -78,13 +78,13 @@ export default function SignIn({ navigation }) {
           <Text style={styles.con}>O regístrate con:</Text>
           
           <Image
-            // style={styles.google}
+            style={styles.google}
             source={require('../img/GoogleIcon.png')}
           />
 
           <View style={{ flex: 1, flexDirection: 'row' }}>
             <Text style={{ color: 'white' }}>¿Ya tienes una cuenta? </Text>
-            <Text style={{ color: 'white', fontWeight: 'bold'}} onPress={() => {
+            <Text style={{ color: 'white', fontWeight: 'bold' }} onPress={() => {
               navigation.navigate('Login')
             }}>Inicia Sesión</Text>
           </View>
@@ -171,13 +171,13 @@ const styles = StyleSheet.create({
   registrarme: {
     backgroundColor: 'white',
     borderRadius: 8,
-    marginBottom: 50,
+    marginBottom: 40,
     width: '80%',
     alignSelf: 'center',
   },
   google: {
-    width: 300,
-    height: 300,
-    // marginBottom: 10,
+    width: 40,
+    height: 40,
+    marginBottom: 10,
   },
 });
