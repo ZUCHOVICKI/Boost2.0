@@ -59,6 +59,7 @@ export default function Login({ navigation }) {
               autoCapitalize="none"
               onChangeText={setEmail}
               value={email}
+              style={{ color: 'white' }}
             />
 
           </Item>
@@ -72,6 +73,7 @@ export default function Login({ navigation }) {
               autoCapitalize="none"
               onChangeText={setPassword}
               value={password}
+              style={{ color: 'white' }}
             />
           </Item>
 
