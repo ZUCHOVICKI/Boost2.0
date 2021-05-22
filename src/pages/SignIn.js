@@ -104,7 +104,9 @@ export default function SignIn({ navigation }) {
               }
             }}
           >
-            <Text style={styles.text}>
+            <Text style={styles.text} onPress={() => {
+              navigation.navigate('ChooseAvatar')
+            }}>
               Registrarme
             </Text>
           </Button>
