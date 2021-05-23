@@ -2,6 +2,7 @@ import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'expo-status-bar';
+import  AsyncStorage  from '@react-native-async-storage/async-storage';
 
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, Image } from 'react-native';
@@ -29,6 +30,22 @@ export default function SignIn({ navigation }) {
   const [username, setUsername] = useState("")
 
   let today = new Date()
+
+  async function avatar (){
+
+    const data = {
+      user: username,
+    }
+
+    try {
+      await AsyncStorage.setItem("data", JSON.stringify(data));
+      console.log("Se guardaron los datos");
+    }
+    catch (e) {
+      console.log(e);
+    }
+    navigation.navigate('ChooseAvatar');
+  }
 
   return (
     <View style={styles.container}>
@@ -104,9 +121,7 @@ export default function SignIn({ navigation }) {
               }
             }}
           >
-            <Text style={styles.text} onPress={() => {
-              navigation.navigate('ChooseAvatar')
-            }}>
+            <Text style={styles.text} onPress={avatar}>
               Registrarme
             </Text>
           </Button>

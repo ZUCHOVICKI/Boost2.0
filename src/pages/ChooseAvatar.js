@@ -1,7 +1,8 @@
 import React, {useState, useEffect, useCallback, memo, useRef} from 'react';
 import { StyleSheet, Text, View, Image, Dimensions, FlatList } from 'react-native';
 //import CustomButton from '../Components/CustomButton';
-//import { AsyncStorage } from '@react-native-async-storage/async-storage';
+import  AsyncStorage from '@react-native-async-storage/async-storage';
+import { Button, Label } from "native-base";
 
 const { width: windowWidth, height: windowHeight } = Dimensions.get("window");
 
@@ -11,15 +12,15 @@ const styles = StyleSheet.create({
     width: windowWidth,
     justifyContent: "flex-start",
     alignItems: "center",
-    marginTop: 30,
+    marginTop: 20,
   },
-  slideImage: { width: windowWidth * 0.6, height: windowHeight * 0.4 },
+  slideImage: { width: windowWidth * 0.6, height: windowHeight * 0.4, borderRadius: 15 },
   slideTitle: { fontSize: 24, color: 'white' },
   // slideSubtitle: { fontSize: 18 },
 
   pagination: {
     position: "absolute",
-    bottom: 8,
+    bottom: 118,
     width: "100%",
     justifyContent: "center",
     flexDirection: "row",
@@ -42,12 +43,12 @@ const styles = StyleSheet.create({
 },
 Vamos: {
     padding: 5,
-    paddingTop: 100,
+    paddingTop: 70,
     marginHorizontal: 16,
     fontSize: 30,
     textAlign: "left",
     color: 'white',
-    fontFamily: "Poppins",
+    // fontFamily: "Poppins",
     fontWeight: 'bold',
 },
 emoji: {
@@ -61,16 +62,28 @@ Sel: {
   fontSize: 20,
   textAlign: "left",
   color: 'white',
-  fontFamily: "Poppins",
+  // fontFamily: "Poppins",
+},
+text: {
+  color: '#0A0B3E',
+  fontWeight: 'bold',
+  fontSize: 23,
+  left: 37,
+},
+listo: {
+  backgroundColor: 'white',
+  borderRadius: 8,
+  marginBottom: 40,
+  width: '38%',
+  alignSelf: 'center',
 },
 });
 
-const av = ["../img/Avatares/Avatar_1.png", "../img/Avatares/Avatar_2.png", "../img/Avatares/Avatar_3.png", "../img/Avatares/Avatar_4.png"];
 
 const slideList = Array.from({ length: 4 }).map((_, i) => {
   return {
     id: i,
-    image: av[i],
+    // image: av[i],
     title: `Avatar ${i + 1}`,
     // subtitle: `This is the subtitle ${i + 1}!`,
   };
@@ -78,13 +91,7 @@ const slideList = Array.from({ length: 4 }).map((_, i) => {
 
 const Slide = memo(function Slide({ data }) {
   console.log(data.id);
-  // return (
-  //   <View style={styles.slide}>
-  //     <Image source={require("../img/Avatares/Avatar_2.png")} style={styles.slideImage}></Image>
-  //     <Text style={styles.slideTitle}>{data.title}</Text>
-  //     <Text style={styles.slideSubtitle}>{data.subtitle}</Text>
-  //   </View>
-  // );
+
   if(data.id == 0){
     return (
       <View style={styles.slide}>
@@ -121,6 +128,8 @@ const Slide = memo(function Slide({ data }) {
   
 });
 
+
+
 function Pagination({ index }) {
   return (
     <View style={styles.pagination} pointerEvents="none">
@@ -142,6 +151,19 @@ function Pagination({ index }) {
 }
 
 export default function Login({ navigation }) {
+
+  const [username, setUsername] = useState("user");
+
+  async function loadData (){
+  const nb = await AsyncStorage.getItem("data");
+  var nb2 = nb.substr(9);
+  nb2 = nb2.replace('"', "");
+  nb2 = nb2.replace('}', "");
+  // console.log(nb2);
+  setUsername(nb2);
+  // console.log(data);
+  //navigation.navigate("Login");
+}
 
   const [index, setIndex] = useState(0);
   const indexRef = useRef(index);
@@ -187,14 +209,13 @@ export default function Login({ navigation }) {
     useEffect(function () {
         navigation.setOptions({
             headerShown: false,
-            
-
         });
+        loadData();
     });
 
     return (
       <View style={ styles.container }>
-        <Text style={styles.Vamos}>¡Vamos a empezar @Username!
+        <Text style={styles.Vamos}>¡Vamos a empezar @{username}!
         <Image 
             style={styles.emoji}
             source={require('../img/frio.png')}
@@ -215,6 +236,19 @@ export default function Login({ navigation }) {
         {...flatListOptimizationProps}
       />
       <Pagination index={index}></Pagination>
+
+      <Button style={styles.listo} onPress={() => {
+              try {
+                  navigation.navigate('Cuestionario2')
+              }
+              catch (error) {
+                console.log(error.toString())
+              }
+            }}>
+      <Text style={styles.text}>
+          ¡Listo!
+      </Text>
+      </Button>
         
       </View>
     );

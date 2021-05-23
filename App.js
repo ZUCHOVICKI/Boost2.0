@@ -10,9 +10,10 @@ import Login from './src/pages/Login';
 import SignIn from './src/pages/SignIn';
 import Principal from './src/pages/Principal';
 import Formulario from './src/pages/Formulario';
-import Graficas from './src/pages/Graficas'
-import Animo from './src/pages/AnimoDiario'
-import ChooseAvatar from './src/pages/ChooseAvatar'
+import Graficas from './src/pages/Graficas';
+import Animo from './src/pages/AnimoDiario';
+import ChooseAvatar from './src/pages/ChooseAvatar';
+import Cuestionario2 from './src/pages/Cuestionario2';
 
 export default function App() {
 
@@ -28,10 +29,12 @@ export default function App() {
           headerTitle: false,
         }}> */}
       <Stack.Navigator>
+      <Stack.Screen name="ChooseAvatar" component={ChooseAvatar} />
         <Stack.Screen name="Main" component={Main} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="SignIn" component={SignIn} />
-        <Stack.Screen name="ChooseAvatar" component={ChooseAvatar} />
+        
+        <Stack.Screen name="Cuestionario2" component={Cuestionario2} />
         <Stack.Screen name="Principal" component={Principal} />
         <Stack.Screen name="Formulario" component={Formulario} />
         <Stack.Screen name="Graficas" component={Graficas} />
