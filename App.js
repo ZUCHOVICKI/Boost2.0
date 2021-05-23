@@ -29,11 +29,10 @@ export default function App() {
           headerTitle: false,
         }}> */}
       <Stack.Navigator>
-      <Stack.Screen name="ChooseAvatar" component={ChooseAvatar} />
         <Stack.Screen name="Main" component={Main} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="SignIn" component={SignIn} />
-        
+        <Stack.Screen name="ChooseAvatar" component={ChooseAvatar} />
         <Stack.Screen name="Cuestionario2" component={Cuestionario2} />
         <Stack.Screen name="Principal" component={Principal} />
         <Stack.Screen name="Formulario" component={Formulario} />
