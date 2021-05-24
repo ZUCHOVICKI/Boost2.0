@@ -1,11 +1,16 @@
-import React, { useState, Component } from 'react';
+import React, { useState, Component, useEffect } from 'react';
 import Firebase from "../../config/firebase";
-import { View, Text, TextInput } from 'react-native'
+import { View, Text, TextInput, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import Slider from "@react-native-community/slider"
 import { Container, Content, Header, Form, Input, Item, Button, Label } from "native-base"
 
 export default function Formulario({navigation}) {
 
+    useEffect(function () {
+    navigation.setOptions({
+        headerShown: false,
+    });
+    });
 
     let ActiveUser;//Creacion del Usuario activo
     let date = new Date()
@@ -33,21 +38,35 @@ export default function Formulario({navigation}) {
 
 
     return (
-        <View>
-            <Text>¿Has Tomado suficiente agua esta dia? </Text><Text>{q1}</Text>
+        <View style={ styles.container }>
+            <TouchableOpacity onPress={() => { navigation.navigate('Principal')}}>
+                <Image
+                style={styles.back}
+                source={require('../img/Back_Icon.png')}
+                />
+            </TouchableOpacity>
+            <View style={styles.preg2}></View>
+            <Text style={styles.preg}>¿Has Tomado suficiente agua esta dia?  </Text><Text style={styles.num}>{q1}</Text>
+            <View style={ styles.sld}>
             <Slider style={{ width: 250, height: 50 }} minimumValue={0} maximumValue={10} value={5} step={1} onValueChange={(value) => { setQ1(value) }} />
+            </View>
 
-            <Text>¿Describe tu nivel de estres este dia?  </Text><Text>{q2}</Text>
+            <Text style={styles.preg}>Describe tu nivel de estres este dia  </Text><Text style={styles.num}>{q2}</Text>
+            <View style={ styles.sld}>
             <Slider style={{ width: 250, height: 50 }} minimumValue={0} maximumValue={10} value={5} step={1} onValueChange={(value) => { setQ2(value) }} />
+            </View>
 
-
-            <Text>¿Has terminado los pendientes que tenias propuestos?</Text><Text>{q3}</Text>
+            <Text style={styles.preg}>¿Has terminado los pendientes que tenias propuestos?</Text><Text style={styles.num}>{q3}</Text>
+            <View style={ styles.sld}>
             <Slider style={{ width: 250, height: 50 }} minimumValue={0} maximumValue={10} value={5} step={1} onValueChange={(value) => { setQ3(value) }} />
+            </View>
 
-            <Text>¿Cual dirias que es tu estado de animo el dia de hoy?</Text><Text>{q4}</Text>
+            <Text style={styles.preg}>¿Cual dirias que es tu estado de animo el dia de hoy?</Text><Text style={styles.num}>{q4}</Text>
+            <View style={ styles.sld}>
             <Slider style={{ width: 250, height: 50 }} minimumValue={0} maximumValue={10} value={5} step={1} onValueChange={(value) => { setQ4(value) }} />
+            </View>
 
-            <Button onPress={() => {
+            <Button style={styles.conti} onPress={() => {
               if(month<10){
                   month2 = "0"+month
               }
@@ -69,12 +88,71 @@ export default function Formulario({navigation}) {
                     
 
                 },{merge:true})
-                navigation.navigate('Principal')
+                navigation.navigate('Graficas')
             }}>
-                <Text>Enviar Formulario</Text>
+                <Text style={styles.text}>Continuar</Text>
+                <Image
+                    style={styles.sig}
+                    source={require('../img/Arrow2.png')}
+                />
             </Button>
 
 
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+  
+
+  container: {
+    flex: 1,
+    backgroundColor: "#0A0B3E",
+    // color: 'white',
+    },
+  preg: {
+    color: '#FFFFFF',
+    fontWeight: 'bold',
+    fontSize: 18,
+    left: 2,
+    marginHorizontal: 16,
+    textAlign: "center",
+    marginTop: 10,
+    },
+  preg2: {
+    marginVertical:-22,
+    },
+  num: {
+    color: 'white',
+    textAlign: 'center',
+    bottom: 1,
+    },
+  sld: {
+    backgroundColor: "#D9CAF4",
+    width: 250,
+    left: 50,
+    borderRadius:15,
+  },
+  conti: {
+    backgroundColor: 'white',
+    borderRadius: 8,
+    width: '80%',
+    // alignSelf: 'center',
+    marginTop: 30,
+    left: 31,
+  },
+  text: {
+    color: '#0A0B3E',
+    fontWeight: 'bold',
+    fontSize: 18,
+    left: 21,
+  },
+  back: {
+    marginVertical: 45,
+    left: 12,
+    width: 30,
+  },
+  sig: {
+    right: 8,
+  },
+});

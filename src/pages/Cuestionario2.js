@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useCallback, memo, useRef} from 'react';
-import { StyleSheet, Text, View, Image, Dimensions, FlatList } from 'react-native';
+import { StyleSheet, Text, View, Image, Dimensions, FlatList, TouchableOpacity } from 'react-native';
 import { Button, Label } from "native-base";
 //import CustomButton from '../Components/CustomButton';
 import  AsyncStorage from '@react-native-async-storage/async-storage';
@@ -68,10 +68,12 @@ export default function Login({ navigation }) {
 });
     return (
       <View style={ styles.container }>
-        <Image
+        <TouchableOpacity onPress={() => { navigation.navigate('ChooseAvatar')}}>
+          <Image
             style={styles.back}
             source={require('../img/Back_Icon.png')}
           />
+        </TouchableOpacity>
         <Text style={styles.Constesta}>Contesta este pequeño cuestionario.</Text>
 
         <Image
@@ -82,7 +84,7 @@ export default function Login({ navigation }) {
         <Text style={styles.estas}>¿Estas listx?</Text>
         <Button style={styles.listo} onPress={() => {
               try {
-                  navigation.navigate('Cuestionario2')
+                  navigation.navigate('Formulario')
               }
               catch (error) {
                 console.log(error.toString())
