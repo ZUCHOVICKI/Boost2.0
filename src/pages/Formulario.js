@@ -1,6 +1,6 @@
 import React, { useState, Component, useEffect } from 'react';
 import Firebase from "../../config/firebase";
-import { View, Text, TextInput, StyleSheet, Image, TouchableOpacity } from 'react-native'
+import { View, Text, ScrollView, TextInput, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import Slider from "@react-native-community/slider"
 import { Container, Content, Header, Form, Input, Item, Button, Label } from "native-base"
 
@@ -46,6 +46,7 @@ export default function Formulario({navigation}) {
                 />
             </TouchableOpacity>
             <View style={styles.preg2}></View>
+            <ScrollView>
             <Text style={styles.preg}>¿Has Tomado suficiente agua esta dia?  </Text><Text style={styles.num}>{q1}</Text>
             <View style={ styles.sld}>
             <Slider style={{ width: 250, height: 50 }} minimumValue={0} maximumValue={10} value={5} step={1} onValueChange={(value) => { setQ1(value) }} />
@@ -96,7 +97,7 @@ export default function Formulario({navigation}) {
                     source={require('../img/Arrow2.png')}
                 />
             </Button>
-
+            </ScrollView>
 
         </View>
     )
