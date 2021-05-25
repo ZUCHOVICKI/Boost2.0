@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useCallback, memo, useRef} from 'react';
 import { StyleSheet, Text, View, Image, Dimensions, FlatList, TouchableOpacity, ScrollView } from 'react-native';
 import BarMenu from '../utils/bottom-bar';
+import ChallengeCard from '../utils/challege-card';
 
 export default function Perfil({ navigation }) {
     useEffect(function () {
@@ -14,7 +15,7 @@ return (
        {/* Header */}
        <View style={profileStyles.header}>
            <View style={profileStyles.header__leftBlock}>
-               <Image style={profileStyles.leftBlock__img} source={require('../img/WorkflowTeamwork.png')}></Image>
+               <Image style={profileStyles.leftBlock__img} source={require('../img/man-profile.jpg')}></Image>
            </View>
            <View style={profileStyles.header__rightBlock}>
                <View style={profileStyles.rightBlock__texts}>
@@ -22,7 +23,7 @@ return (
                 <Text style={profileStyles.texts__text_bold}>3 Meses</Text>
                </View>
                <View  style={profileStyles.rightBlock__imgContainer}>
-                   <Image style={profileStyles.rightBlock__img} source={require('../img/WorkflowTeamwork.png')}></Image>
+                   <Image style={profileStyles.rightBlock__img} source={require('../img/log-out.png')}></Image>
                </View>
            </View>
        </View>
@@ -30,8 +31,8 @@ return (
        <View style={profileStyles.dataSection}>
            <Text style={profileStyles.dataSection__title}>Hola</Text>
            <View style={profileStyles.dataSection__edit}>
-           <Text style={profileStyles.dataSection__title}>@username! 🙌🏽</Text>
-           <Image style={profileStyles.dataSection__img} source={require('../img/WorkflowTeamwork.png')}></Image>
+           <Text style={profileStyles.dataSection__title2}>@username! 🙌🏽</Text>
+           <Image style={profileStyles.dataSection__img} source={require('../img/edit.png')}></Image>
            </View>
        </View>
        {/* Main Container */}
@@ -43,25 +44,19 @@ return (
                 <Text style={profileStyles.mainCard__h2}>mental stars</Text>
             </View>
             <View style={profileStyles.mainCard_rightBlock}>
-                <Image style={profileStyles.mainCard__img} source={require('../img/WorkflowTeamwork.png')}></Image> 
-                <Image style={profileStyles.mainCard__img} source={require('../img/WorkflowTeamwork.png')}></Image> 
-                <Image style={profileStyles.mainCard__img} source={require('../img/WorkflowTeamwork.png')}></Image> 
+                <Image style={profileStyles.mainCard__img} source={require('../img/star.png')}></Image> 
+                <Image style={profileStyles.mainCard__img} source={require('../img/star.png')}></Image> 
+                <Image style={profileStyles.mainCard__img} source={require('../img/full-star.png')}></Image> 
             </View>
         </View>
-        <View style={profileStyles.main__challenges}>
-            <View style={profileStyles.main__challenge}>
-                <Image style={profileStyles.challenge__img} source={require('../img/WorkflowTeamwork.png')}></Image> 
-                <Text style={profileStyles.challenge__text}>Saca la Basura Señora de la casa</Text>
+            <View style={profileStyles.main__challenges}>
+                <ChallengeCard body={'Saca la Basura'}></ChallengeCard>
+                <ChallengeCard body={'Corre 15 mins'}></ChallengeCard>
+                <ChallengeCard body={'Baila en el espejo'}></ChallengeCard>
+                <ChallengeCard body={'Sonries 10 veces'}></ChallengeCard>
+                <ChallengeCard body={'Medita 5 mins'}></ChallengeCard>
+                <ChallengeCard body={'Silba bonito'}></ChallengeCard>
             </View>
-            <View style={profileStyles.main__challenge}>
-                <Image style={profileStyles.challenge__img} source={require('../img/WorkflowTeamwork.png')}></Image> 
-                <Text style={profileStyles.challenge__text}>Saca la Basura</Text>
-            </View>
-            <View style={profileStyles.main__challenge}>
-                <Image style={profileStyles.challenge__img} source={require('../img/WorkflowTeamwork.png')}></Image> 
-                <Text style={profileStyles.challenge__text}>Saca la Basura</Text>
-            </View>        
-        </View>
         </View>
         <BarMenu></BarMenu>
     </View>
@@ -81,10 +76,12 @@ const profileStyles = StyleSheet.create({
     paddingLeft:20,
     paddingRight:20,
     },
+
     header__leftBlock:{
     flex:1,
     paddingTop:30,
     },
+
     leftBlock__img:{
     borderRadius:50,
     height:67,
@@ -93,11 +90,13 @@ const profileStyles = StyleSheet.create({
     borderWidth:3,
     borderColor:'#64FCD9',
     },
+
     header__rightBlock:{
     flex:1,
     // backgroundColor:'yellow',
     flexDirection:'row',
     },
+
     rightBlock__texts:{
     justifyContent:'center',
     alignItems:'flex-end',
@@ -105,18 +104,22 @@ const profileStyles = StyleSheet.create({
     paddingTop:30,
     flex:1.5,
     },
+
     texts__text:{
     color:'#fff',
     },
+
     texts__text_bold:{
     color:'#fff',
     fontWeight:'bold',
     },
+
     rightBlock__imgContainer:{
         justifyContent:'center',
         flex:.5,
         paddingTop:30,
     },
+
     rightBlock__img:{
     height:20,
     width:20,
@@ -129,15 +132,24 @@ const profileStyles = StyleSheet.create({
         paddingLeft:20,
         paddingRight:20,
     },
+
     dataSection__title:{
         color:'#FFF',
         fontSize:25,
         fontWeight: "bold",
+        marginTop:5,
     },
+    dataSection__title2:{
+        color:'#FFF',
+        fontSize:25,
+        fontWeight: "bold",
+    },
+
     dataSection__edit:{
         flexDirection:'row',
         alignItems:'center',
     },
+
     dataSection__img:{
         height:20,
         width:20,
@@ -208,36 +220,5 @@ const profileStyles = StyleSheet.create({
         flexWrap:'wrap',
         paddingTop:10,
     },
-    main__challenge:{
-        minWidth:'48%',
-        width:'48%',
-        marginRight:'1%',
-        marginLeft:'1%',
-        flexDirection:'row',
-        alignItems:'center',
-        marginTop:12,
-        paddingLeft:6,
-        height: 60,
-        backgroundColor:'#fff',
-        borderRadius:6,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-    },
-    challenge__img:{
-        height:47,
-        width:47,
-        borderRadius:6,
-    },
-    challenge__text:{
-        color:'#0A0B3E',
-        fontWeight:'bold',
-        marginLeft:8,
-        flexShrink:1,
-    }
+    
 });

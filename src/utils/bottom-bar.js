@@ -5,15 +5,15 @@ export default function BarMenu({ navigation }) {
     return (
         <View style={Styles.bar}>
             <View style={Styles.bar__imgContainer}>
-                <Image style={Styles.bar__img} source={require('../img/WorkflowTeamwork.png')}></Image> 
+                <Image style={Styles.bar__img} source={require('../img/heart.png')}></Image> 
             </View>
 
             <View style={Styles.bar__imgContainer}>
-                <Image style={Styles.bar__img} source={require('../img/WorkflowTeamwork.png')}></Image>
+                <Image style={Styles.bar__img} source={require('../img/menu.png')}></Image>
             </View>
 
             <View style={Styles.bar__imgContainer}>
-                <Image style={Styles.bar__img} source={require('../img/WorkflowTeamwork.png')}></Image>
+                <Image style={Styles.bar__img} source={require('../img/user-icon.png')}></Image>
             </View>
         </View>  
 )}
@@ -43,7 +43,7 @@ bar__imgContainer:{
     justifyContent:'center',
 },    
 bar__img:{
-    height:25,
-    width:25,
+    height:22,
+    width:22,
 },
 });
