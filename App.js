@@ -14,6 +14,7 @@ import Graficas from './src/pages/Graficas';
 import Animo from './src/pages/AnimoDiario';
 import ChooseAvatar from './src/pages/ChooseAvatar';
 import Cuestionario2 from './src/pages/Cuestionario2';
+import Perfil from './src/pages/Perfil';
 
 export default function App() {
 
@@ -38,7 +39,7 @@ export default function App() {
         <Stack.Screen name="Formulario" component={Formulario} />
         <Stack.Screen name="Graficas" component={Graficas} />
         <Stack.Screen name="Animo" component={Animo} />
-        
+        <Stack.Screen name="Perfil" component={Perfil} />
       </Stack.Navigator>
     </NavigationContainer>
   );

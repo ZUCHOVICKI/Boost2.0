@@ -19,6 +19,14 @@ export default function NextPage({navigation}) {
 return (
 
     <View>
+      <Text>
+           <Button onPress={()=>{
+             navigation.navigate('Perfil')
+           }} >
+             <Text>Perfil</Text>
+           </Button>
+        </Text>
+
         <Text>
            <Button onPress={()=>{
              navigation.navigate('Formulario')
